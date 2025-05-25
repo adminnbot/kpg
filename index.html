@@ -1,14 +1,505 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<title>KPG Pools</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KPG Pools - Professional Pool Cleaning Services in Dubai</title>
+    <style>
+        :root {
+            --primary: #0066cc;
+            --secondary: #004080;
+            --accent: #00aaff;
+            --light: #f0f8ff;
+            --dark: #333333;
+            --success: #28a745;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: #f9f9f9;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background:
+                linear-gradient(45deg, transparent 65%, rgba(255,255,255,0.1) 65%),
+                linear-gradient(-45deg, transparent 65%, rgba(255,255,255,0.1) 65%);
+            background-size: 20px 20px;
+            opacity: 0.3;
+        }
+
+        .logo {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .logo::after {
+            content: "";
+            display: block;
+            width: 60%;
+            height: 3px;
+            background: var(--accent);
+            margin: 10px auto;
+        }
+
+        .tagline {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: var(--accent);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 1rem;
+            transition: all 0.3s ease;
+            border: 2px solid var(--accent);
+        }
+
+        .cta-button:hover {
+            background-color: transparent;
+            color: var(--accent);
+        }
+
+        .whatsapp-button {
+            display: inline-flex;
+            align-items: center;
+            background-color: #25D366;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            margin: 1rem 0;
+            transition: all 0.3s ease;
+        }
+
+        .whatsapp-button::before {
+            content: "";
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            margin-right: 10px;
+            background:
+                radial-gradient(circle at 60% 65%, white 3%, transparent 3%),
+                radial-gradient(circle at 40% 65%, white 3%, transparent 3%),
+                radial-gradient(circle at 50% 35%, white 15%, transparent 15%),
+                radial-gradient(circle at 50% 50%, #25D366 40%, transparent 40%);
+            border-radius: 50%;
+        }
+
+        .whatsapp-button:hover {
+            background-color: #128C7E;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        section {
+            padding: 4rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: var(--primary);
+            margin: 15px auto;
+            border-radius: 2px;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background: white;
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+            text-align: center;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--light);
+            border-radius: 50%;
+            color: var(--primary);
+            font-size: 1.8rem;
+            position: relative;
+        }
+
+        .feature-icon::before {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border: 2px dashed var(--primary);
+            border-radius: 50%;
+            animation: spin 20s linear infinite;
+            opacity: 0.2;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .service-list {
+            list-style: none;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .service-item {
+            background: white;
+            margin-bottom: 1rem;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+        }
+
+        .service-header {
+            display: flex;
+            align-items: center;
+            padding: 1.2rem 1.5rem;
+            background: var(--light);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .service-header:hover {
+            background: #e1f0ff;
+        }
+
+        .service-icon {
+            width: 30px;
+            height: 30px;
+            margin-right: 15px;
+            background: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            flex-shrink: 0;
+        }
+
+        .service-title {
+            font-weight: 600;
+            flex-grow: 1;
+        }
+
+        .service-content {
+            padding: 1.5rem;
+            border-top: 1px solid #eee;
+            display: none;
+        }
+
+        .service-item.active .service-content {
+            display: block;
+        }
+
+        .testimonials {
+            background: var(--light);
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .testimonial-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            position: relative;
+        }
+
+        .testimonial-card::before {
+            content: "\"";
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 4rem;
+            color: rgba(0,0,0,0.05);
+            font-family: serif;
+            line-height: 1;
+        }
+
+        .testimonial-text {
+            margin-bottom: 1.5rem;
+            font-style: italic;
+            position: relative;
+            z-index: 1;
+        }
+
+        .testimonial-author {
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 3rem 0;
+            text-align: center;
+        }
+
+        .contact-info {
+            margin: 2rem 0;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+        }
+
+        .contact-icon {
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+        }
+
+        .copyright {
+            opacity: 0.7;
+            margin-top: 2rem;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .logo {
+                font-size: 2rem;
+            }
+
+            .tagline {
+                font-size: 1rem;
+            }
+
+            section {
+                padding: 3rem 0;
+            }
+        }
+    </style>
 </head>
 <body>
-Welcome to KPG Pools
-<br/>
-Reach us at <a href="mailto:kpgpools@gmail.com">kpgpools@gmail.com</a>
+    <header>
+        <div class="container">
+            <h1 class="logo">KPG POOLS</h1>
+            <p class="tagline">Dubai's Trusted Pool Cleaning & Maintenance Specialists</p>
+            <a href="https://wa.me/971554402052" class="whatsapp-button">Chat on WhatsApp: +971 55 440 2052</a>
+            <p>24/7 Emergency Services Available</p>
+            <a href="#services" class="cta-button">Explore Our Services</a>
+        </div>
+    </header>
 
-Call us at <a href="tel:+971554402052">+971 55 440 2052</a>
+    <section id="about">
+        <div class="container">
+            <h2 class="section-title">Why Choose KPG Pools?</h2>
+            <div class="features">
+                <div class="feature-card">
+                    <div class="feature-icon">✓</div>
+                    <h3>15+ Years Experience</h3>
+                    <p>Trusted pool maintenance provider serving Dubai's luxury villas, hotels, and communities since 2008.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">✧</div>
+                    <h3>Dubai Climate Specialists</h3>
+                    <p>Expertise in handling Dubai's harsh climate conditions that affect pool water chemistry and equipment.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">♥</div>
+                    <h3>100% Satisfaction</h3>
+                    <p>We guarantee professional service with attention to detail that exceeds expectations.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
+    <section id="services" class="light-bg">
+        <div class="container">
+            <h2 class="section-title">Our Pool Services</h2>
+            <p style="text-align: center; max-width: 800px; margin: 0 auto 3rem;">Tailored solutions for Dubai's unique urban environment where dust, heat, and high usage demand specialized care.</p>
+
+            <ul class="service-list">
+                <li class="service-item">
+                    <div class="service-header">
+                        <div class="service-icon">①</div>
+                        <div class="service-title">Weekly Maintenance</div>
+                    </div>
+                    <div class="service-content">
+                        <p>Comprehensive weekly cleaning program including skimming, vacuuming, brushing, and chemical balancing specifically formulated for Dubai's water and climate conditions. Our technicians are trained to handle the unique challenges of urban pool maintenance.</p>
+                    </div>
+                </li>
+                <li class="service-item">
+                    <div class="service-header">
+                        <div class="service-icon">②</div>
+                        <div class="service-title">Filter Cleaning</div>
+                    </div>
+                    <div class="service-content">
+                        <p>Specialized filter maintenance to combat Dubai's high dust levels. We service all filter types (sand, cartridge, DE) with thorough backwashing and media replacement when needed. Our approach prevents the clogging issues common in desert environments.</p>
+                    </div>
+                </li>
+                <li class="service-item">
+                    <div class="service-header">
+                        <div class="service-icon">③</div>
+                        <div class="service-title">Chemical Balancing</div>
+                    </div>
+                    <div class="service-content">
+                        <p>Precision water chemistry management to maintain perfect balance despite Dubai's extreme temperatures and heavy usage. We use premium chemicals that are safe for all pool surfaces and swimmers.</p>
+                    </div>
+                </li>
+                <li class="service-item">
+                    <div class="service-header">
+                        <div class="service-icon">④</div>
+                        <div class="service-title">Equipment Repair</div>
+                    </div>
+                    <div class="service-content">
+                        <p>Expert diagnosis and repair of pumps, heaters, automation systems, and other pool equipment. We work with all major brands and can source parts quickly in Dubai's market.</p>
+                    </div>
+                </li>
+                <li class="service-item">
+                    <div class="service-header">
+                        <div class="service-icon">⑤</div>
+                        <div class="service-title">Tile & Surface Care</div>
+                    </div>
+                    <div class="service-content">
+                        <p>Specialized cleaning to remove Dubai's hard water stains and scale buildup. We use non-abrasive techniques to restore your pool's finish without damage.</p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="testimonials">
+        <div class="container">
+            <h2 class="section-title">What Our Clients Say</h2>
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"KPG Pools transformed our community pool in Jumeirah. After years of struggling with other companies, they finally got the water chemistry right for our climate. Their team is professional and always on time."</p>
+                    <p class="testimonial-author">- Ahmed R., Property Manager</p>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"As a hotel in Downtown Dubai, we need reliable pool service. KPG has been maintaining our three pools for 5 years with zero complaints from guests. Their heat-resistant chemical program is exceptional."</p>
+                    <p class="testimonial-author">- Sarah L., Hotel Operations</p>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"The technician noticed our pump was about to fail during a routine visit and saved us from costly damage. This proactive approach is why we've stayed with KPG for our villa pool in Emirates Hills."</p>
+                    <p class="testimonial-author">- Mohammed K., Homeowner</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="container">
+            <h2 class="section-title">Ready for a Pristine Pool?</h2>
+            <p style="text-align: center; margin-bottom: 2rem;">Contact us today for a free consultation and quote tailored to your pool's needs.</p>
+            <div style="text-align: center;">
+                <a href="https://wa.me/971554402052" class="whatsapp-button">Chat Now: +971 55 440 2052</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <h2 class="logo" style="color: white; font-size: 2rem;">KPG POOLS</h2>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <div class="contact-icon">✆</div>
+                    <div>+971 55 440 2052</div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">✉</div>
+                    <div>kpgpools@gmail.com</div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">⌂</div>
+                    <div>Serving all Dubai areas: Palm Jumeirah, Downtown, Emirates Hills, and more</div>
+                </div>
+            </div>
+            <p class="copyright">© 2023 KPG Pools. All rights reserved. Dubai's premier pool maintenance specialists.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Simple script to toggle service details
+        document.querySelectorAll('.service-header').forEach(header => {
+            header.addEventListener('click', () => {
+                const item = header.parentElement;
+                item.classList.toggle('active');
+
+                // Close other open items
+                document.querySelectorAll('.service-item').forEach(otherItem => {
+                    if (otherItem !== item && otherItem.classList.contains('active')) {
+                        otherItem.classList.remove('active');
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html>
-
